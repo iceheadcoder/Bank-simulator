@@ -15,3 +15,10 @@ Sources:-
 
 JDatePicker:
  https://github.com/JDatePicker/JDatePicker/archive/refs/tags/jdatepicker-1.3.4.1.zip
+
+
+for the DBconnection, after creating the file:
+
+goto: https://dev.mysql.com/downloads/connector/j/ to download mySQL-Connector/J
+
+then add the .jar file to the java projects section and apply changes.
