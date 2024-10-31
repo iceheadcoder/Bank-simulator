@@ -2,6 +2,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.*;
 import javax.swing.*;
+import com.toedter.calendar.JDateChooser;
+
 
 public class signup extends JFrame {
 
@@ -47,10 +49,10 @@ public class signup extends JFrame {
         dob.setBounds(100, 240, 200, 30);
         add(dob);
 
-        JTextField dobText = new JTextField();
-        dobText.setFont(new Font("Raleway", Font.BOLD, 14));
-        dobText.setBounds(300, 240,400 , 30);
-        add(dobText);
+        JDateChooser dateChooser = new JDateChooser();
+        dateChooser.setBounds(300,240,400,30);
+        dateChooser.setForeground(Color.BLACK);
+        add(dateChooser); 
 
         JLabel gender = new JLabel("Gender:");
         gender.setFont(new Font("Raleway", Font.BOLD, 22));
@@ -121,7 +123,6 @@ public class signup extends JFrame {
         pinText.setFont(new Font("Raleway", Font.BOLD, 14));
         pinText.setBounds(300, 590,400 , 30);
         add(pinText);
-
 
 
         getContentPane().setBackground(Color.WHITE);
