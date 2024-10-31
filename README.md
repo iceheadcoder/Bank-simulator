@@ -3,6 +3,7 @@ After adding the jcalendar-1.4.jar file and the whole file of JDatePicker, type 
 
 
 javac -cp ".;lib\jcalendar-1.4.jar" signup.java
+
 java -cp ".;lib\jcalendar-1.4.jar" signup
 
 
