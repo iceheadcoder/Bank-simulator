@@ -4,6 +4,18 @@
         "lib"
     ],
     "java.project.referencedLibraries": [
-        "d:\\STUDY STUFF\\Projects\\Bank simulator\\lib\\jcalendar-1.4.jar"
+        "d:\\STUDY STUFF\\Projects\\Bank simulator\\lib\\jcalendar-1.4.jar",
+        "lib/mysql-connector-j-9.1.0.jar"
+    ],
+    "java.completion.favoriteStaticMembers": [
+        "org.junit.Assert.*",
+        "org.junit.Assume.*",
+        "org.junit.jupiter.api.Assertions.*",
+        "org.junit.jupiter.api.Assumptions.*",
+        "org.junit.jupiter.api.DynamicContainer.*",
+        "org.junit.jupiter.api.DynamicTest.*",
+        "org.mockito.Mockito.*",
+        "org.mockito.ArgumentMatchers.*",
+        "org.mockito.Answers.*"
     ]
 }
