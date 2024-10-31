@@ -1,4 +1,5 @@
 For the signup.java file, to access JDateChooser,
+
 After adding the jcalendar-1.4.jar file and the whole file of JDatePicker, type these in your VScode terminal
 
 
@@ -8,7 +9,9 @@ java -cp ".;lib\jcalendar-1.4.jar" signup
 
 
 Sources:-
+
 .jar file:
-https://toedter.com/jcalendar/
+ https://toedter.com/jcalendar/
+
 JDatePicker:
-https://github.com/JDatePicker/JDatePicker/archive/refs/tags/jdatepicker-1.3.4.1.zip
+ https://github.com/JDatePicker/JDatePicker/archive/refs/tags/jdatepicker-1.3.4.1.zip
