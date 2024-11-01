@@ -3,7 +3,13 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.*;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 public class Login extends JFrame implements ActionListener {
 
@@ -82,7 +88,8 @@ public class Login extends JFrame implements ActionListener {
         }else if(ae.getSource() == login){
              
         }else if(ae.getSource() == signup){
-
+            setVisible(false);
+            new Signup().setVisible(true);
         }
     }
 
