@@ -144,7 +144,7 @@ public class SignupTwo extends JFrame implements ActionListener{
         if(exist.isSelected()){
             sAcc="exists";
         }else if(nonexist.isSelected()){
-            sAcc="doesn't exist";
+            sAcc="non existent";
         }
        
 
