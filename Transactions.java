@@ -12,8 +12,10 @@ import javax.swing.JLabel;
 public class Transactions extends JFrame implements ActionListener{
 
     JButton deposit,withdraw,minSt,pinchange,fastcash,balanceEnq,exit;
-    Transactions(){
+    String passwordString;
 
+    Transactions(String passwordString){
+        this.passwordString = passwordString;
         setLayout(null);
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("images/atm.jpg"));
@@ -79,6 +81,6 @@ public class Transactions extends JFrame implements ActionListener{
         }
     }
     public static void main(String[] args) {
-        new Transactions();
+        new Transactions("");
     }
 }

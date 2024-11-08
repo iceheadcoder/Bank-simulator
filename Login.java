@@ -11,6 +11,10 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import java.sql.*;
+
+import javax.swing.JOptionPane;
+
 public class Login extends JFrame implements ActionListener {
 
     JButton login, clear, signup;
@@ -86,6 +90,24 @@ public class Login extends JFrame implements ActionListener {
             pinText.setText("");
 
         }else if(ae.getSource() == login){
+            DBconnection c = new DBconnection();
+            String cardnumber = cardText.getText();
+            char[] password = pinText.getPassword(); //getText doesn't work on passwords so, using this method 
+            String passwordString = new String(password);
+            //to convert the char to string for the query
+            String query = "select * from login where cardnumber = '"+cardnumber+"' and pin = '"+passwordString+"' ";
+            try {
+                ResultSet rs = c.s.executeQuery(query);
+                if(rs.next()){
+                    setVisible(false);
+                    new Transactions(passwordString).setVisible(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "Incorrect Card number or PIN" );
+                }
+                
+            } catch (Exception e) {
+                System.out.println(e);
+            }
              
         }else if(ae.getSource() == signup){
             setVisible(false);
