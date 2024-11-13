@@ -12,13 +12,13 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class Deposit extends JFrame implements ActionListener {
+public class Withdrawal extends JFrame implements ActionListener {
 
-    JButton deposit, back;
+    JButton withdraw, back;
     JTextField amount;
     String passwordString;
 
-    Deposit(String passwordString){
+    Withdrawal(String passwordString){
         this.passwordString = passwordString;
 
         setLayout(null);
@@ -31,7 +31,7 @@ public class Deposit extends JFrame implements ActionListener {
         add(image);
 
 
-        JLabel text = new JLabel("Enter the amount you want to Deposit");
+        JLabel text = new JLabel("Enter the amount you want to Withdraw");
         text.setForeground(Color.WHITE);
         text.setFont(new Font("Raleway", Font.BOLD, 16));
         text.setBounds(190, 300, 400, 20);
@@ -42,10 +42,10 @@ public class Deposit extends JFrame implements ActionListener {
         amount.setBounds(176,350,320,25);
         image.add(amount);
 
-        deposit = new JButton("Deposit");
-        deposit.setBounds(355,485,150,30);
-        deposit.addActionListener(this);
-        image.add(deposit);
+        withdraw = new JButton("Withdraw");
+        withdraw.setBounds(355,485,150,30);
+        withdraw.addActionListener(this);
+        image.add(withdraw);
 
         back = new JButton("Back");
         back.setBounds(355,520,150,30);
@@ -62,17 +62,17 @@ public class Deposit extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent ae)
         {
-            if(ae.getSource() == deposit){
+            if(ae.getSource() == withdraw){
                 String number = amount.getText();
                 Date date = new Date();
                 if(number.equals("")){
-                    JOptionPane.showMessageDialog(null, "Please enter the amount you want to deposit");
+                    JOptionPane.showMessageDialog(null, "Please enter the amount you want to Withdraw");
                 }else{
                     try {
                     DBconnection c = new DBconnection();
-                    String query = "insert into bank values('"+passwordString+"','"+date+"','Deposit','"+number+"')";
+                    String query = "insert into bank values('"+passwordString+"','"+date+"','Withdrawal','"+number+"')";
                     c.s.executeUpdate(query);
-                    JOptionPane.showMessageDialog(null,"Rs "+number+" Deposited Successfully");
+                    JOptionPane.showMessageDialog(null,"Rs "+number+" Withdrawn Successfully");
                     setVisible(false);
                     new Transactions(passwordString).setVisible(true);
                     } catch (Exception e) {
@@ -91,6 +91,6 @@ public class Deposit extends JFrame implements ActionListener {
 
 
     public static void main(String[] args) {
-        new Deposit("");
+        new Withdrawal("");
     }
 }
