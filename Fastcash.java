@@ -9,6 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import java.sql.*;
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 public class Fastcash extends JFrame implements ActionListener{
 
     JButton oneH,fiveH,oneT,twoT,fiveT,tenT,back;
@@ -59,7 +63,7 @@ public class Fastcash extends JFrame implements ActionListener{
         tenT = new JButton("Rs 10000");
         tenT.setBounds(360,482,150,30);
         tenT.addActionListener(this);
-        image.add( tenT);
+        image.add(tenT);
 
         back = new JButton("Back");
         back .setBounds(410,520,100,30);
@@ -75,15 +79,38 @@ public class Fastcash extends JFrame implements ActionListener{
 
     public void actionPerformed(ActionEvent ae){
         if(ae.getSource() == back){
-            System.exit(0);
-        }else if(ae.getSource() == deposit){ 
             setVisible(false);
-            new Deposit(passwordString).setVisible(true);
-        }else if(ae.getSource() == withdraw){
-            setVisible(false);
-            new Withdrawal(passwordString).setVisible(true);
-        }
+            new Transactions(passwordString).setVisible(true);
+        }else{ 
+            
+            String amount = ((JButton)ae.getSource()).getText().substring(3); //rs 500 first 3 chars ignored
+            DBconnection c = new DBconnection();
+            try {
+                ResultSet rs = c.s.executeQuery("select * from bank where pin = '"+passwordString+"'");
+                int Balance = 0;
+                while(rs.next()){
+                    if(rs.getString("type").equals("Deposit")){
+                        Balance+=Integer.parseInt(rs.getString("amount"));
+                    }else{
+                        Balance -= Integer.parseInt(rs.getString("amount"));
+                    }
+                }
+                if(ae.getSource() != exit && Balance < Integer.parseInt(amount)){
+                    JOptionPane.showMessageDialog(null,"Insufficient Balance");
+                    return;
+                }
+                Date date = new Date();
+                String query = "insert into bank values('"+passwordString+"','"+date+"','Withdrawal','"+amount+"')" ;
+                c.s.executeQuery(query);
+                JOptionPane.showMessageDialog(null, "Rs "+ amount + " Debited Successfully");
+
+                setVisible(false);
+                new Transactions(passwordString).setVisible(true);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
     }
+}
     public static void main(String[] args) {
         new Fastcash("");
     }
