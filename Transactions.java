@@ -90,6 +90,12 @@ public class Transactions extends JFrame implements ActionListener{
         }else if(ae.getSource() == pinchange){
             setVisible(false);
             new pinChange(passwordString).setVisible(true);
+        }else if(ae.getSource() == balanceEnq){
+            setVisible(false);
+            new BalanceEnquiry(passwordString).setVisible(true);
+        }else if(ae.getSource() == minSt){
+            setVisible(false);
+            new MiniStatement(passwordString).setVisible(true);
         }
     }
     public static void main(String[] args) {
